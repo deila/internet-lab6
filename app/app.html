@@ -1,0 +1,53 @@
+<head>
+  <title>app</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="span6">{{> books}}</div>
+      <div class="span6">
+        <div class="row-fluid">
+          <div class="span12">{{> book}}</div>
+        </div>
+        <div class="row-fluid">
+          <div class="span12">{{> new_book}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<template name="books">
+  <h1 id="books">Books</h1>
+  <ul class="nav">
+  {{#each books}}
+  <li>
+    <a href="#" class="book-link">{{title}}</a>
+  </li>
+  {{/each}}
+  </ul>
+</template>
+
+<template name="book">
+  {{#with book}}
+  <h1 id="book">{{title}}</h1>
+  <em>by {{author}}</em>
+  <p>published by <strong>{{pub_org}}</strong> in {{pub_year}}</p>
+  <p>{{description}}</p>
+  {{/with}}
+</template>
+
+<template name="new_book">
+  <h1 id="create_book">Create book</h1>
+  <form>
+    <p>Title: <input type="text" name="title"></p>
+    <p>Author: <input type="text" name="author"></p>
+    <p>Published Organization: <input type="text" name="pub_org"></p>
+    <p>Published Year: <input type="number" name="pub_year"></p>
+    <p>Description: <textarea name="description" cols="30" rows="10"></textarea></p>
+    <p><input type="submit" value="Create"></p>
+  </form>
+</template>
+
